@@ -6,20 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up(): void
+     public function up(): void
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('phone')->nullable()->unique(); 
-            $table->json('shipping_address')->nullable();  
-            $table->boolean('is_active')->default(true);
-            $table->softDeletes();
+            $table->foreignId('user_id')
+                  ->unique()                
+                  ->constrained()
+                  ->cascadeOnDelete();
+            $table->string('phone')->nullable()->unique();
+            $table->string('city')->nullable();
+            $table->text('shipping_address')->nullable();
+            $table->text('billing_address')->nullable();
             $table->timestamps();
 
-            $table->index('email', 'idx_customers_email');
-            $table->index(['is_active', 'created_at'], 'idx_customers_active_created');
+            $table->index('user_id', 'idx_customers_user_id');
         });
     }
 
