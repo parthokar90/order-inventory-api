@@ -20,6 +20,14 @@ class Category extends Model
         return $this->hasMany(Category::class, 'parent_id');
     }
 
+    /**
+     * Recursive relation to fetch nested sub-categories to any level
+     */
+    public function childrenRecursive(): HasMany
+    {
+        return $this->children()->with('childrenRecursive');
+    }
+
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);

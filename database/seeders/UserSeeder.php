@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
             ['email' => 'admin@email.com'],
             [
                 'name' => 'System Admin',
-                'password' => Hash::make('password123'),
+                'password' => Hash::make('12345678'),
                 'is_active' => true,
             ]
         );
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
             ['email' => 'customer@email.com'],
             [
                 'name' => 'John Doe',
-                'password' => Hash::make('password123'),
+                'password' => Hash::make('12345678'),
                 'is_active' => true,
             ]
         );
