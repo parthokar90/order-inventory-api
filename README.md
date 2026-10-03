@@ -109,7 +109,7 @@ tests/
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/ecommerce-api.git
+git clone https://github.com/parthokar90/order-inventory-api.git
 cd ecommerce-api
 
 # 2. Copy environment file
@@ -139,7 +139,7 @@ docker-compose exec app php artisan queue:work --queue=emails,default
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/ecommerce-api.git
+git clone https://github.com/parthokar90/order-inventory-api.git
 cd ecommerce-api
 
 # 2. Install dependencies
@@ -228,27 +228,25 @@ Authorization: Bearer {your-token}
 
 | Method | Endpoint                             | Description                              |
 | ------ | ------------------------------------ | ---------------------------------------- |
-| POST   | `/admin/login`                       | Admin login                              |
-| POST   | `/admin/logout`                      | Admin logout                             |
-| GET    | `/admin/categories`                  | List categories                          |
-| POST   | `/admin/categories`                  | Create category                          |
-| PUT    | `/admin/categories/{id}`             | Update category                          |
-| DELETE | `/admin/categories/{id}`             | Delete category                          |
-| GET    | `/admin/products`                    | List products (search, filter, paginate) |
-| POST   | `/admin/products`                    | Create product with variants             |
-| GET    | `/admin/products/{id}`               | Product detail                           |
-| PUT    | `/admin/products/{id}`               | Update product                           |
-| DELETE | `/admin/products/{id}`               | Soft delete product                      |
-| POST   | `/admin/products/{id}/images`        | Upload product image                     |
-| GET    | `/admin/inventory`                   | Stock list with filters                  |
-| PATCH  | `/admin/inventory/{variantId}/stock` | Update stock quantity                    |
-| GET    | `/admin/inventory/low-stock`         | Low stock alerts                         |
-| GET    | `/admin/orders`                      | All orders (filter by status/date)       |
-| GET    | `/admin/orders/{id}`                 | Order detail with history                |
-| PATCH  | `/admin/orders/{id}/status`          | Update order status                      |
-| POST   | `/admin/orders/{id}/cancel`          | Cancel order                             |
-| GET    | `/admin/reports/sales`               | Sales report                             |
-| GET    | `/admin/reports/inventory`           | Inventory report                         |
+| POST   | `/api/v1/login`                       | login                              |
+| POST   | `/api/v1/logout`                      | logout                             |
+| GET    | `/api/v1/categories`                  | List categories                          |
+| POST   | `/api/v1/categories`                  | Create category                          |
+| PUT    | `/api/v1/categories/{id}`             | Update category                          |
+| DELETE | `/api/v1/categories/{id}`             | Delete category                          |
+| GET    | `/api/v1/products`                    | List products (search, filter, paginate) |
+| POST   | `/api/v1/products`                    | Create product with variants             |
+| GET    | `/api/v1/products/{id}`               | Product detail                           |
+| PUT    | `/api/v1/products/{id}`               | Update product                           |
+| DELETE | `/api/v1/products/{id}`               | Soft delete product                      |
+| POST   | `/api/v1/products/{id}/images`        | Upload product image                     |
+| GET    | `/api/v1/inventory`                   | Stock list with filters                  |
+| PATCH  | `/api/v1/inventory/{variantId}/stock` | Update stock quantity                    |
+| GET    | `/api/v1/inventory/low-stock`         | Low stock alerts                         |
+| GET    | `/api/v1/orders`                      | All orders (filter by status/date)       |
+| GET    | `/api/v1/orders/{id}`                 | Order detail with history                |
+| PATCH  | `/api/v1/orders/{id}/status`          | Update order status                      |
+| GET    | `/api/v1/reports/inventory`           | Inventory report                         |
 
 ---
 
