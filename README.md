@@ -248,23 +248,6 @@ Authorization: Bearer {your-token}
 | PATCH  | `/api/v1/orders/{id}/status`          | Update order status                      |
 | GET    | `/api/v1/reports/inventory`           | Inventory report                         |
 
----
-
-### Customer Endpoints
-
-| Method | Endpoint                       | Description           |
-| ------ | ------------------------------ | --------------------- |
-| POST   | `/customer/register`           | Customer registration |
-| POST   | `/customer/login`              | Customer login        |
-| POST   | `/customer/logout`             | Logout                |
-| GET    | `/customer/profile`            | View profile          |
-| PATCH  | `/customer/profile`            | Update profile        |
-| POST   | `/customer/orders`             | Place new order       |
-| GET    | `/customer/orders`             | My order history      |
-| GET    | `/customer/orders/{id}`        | Order detail          |
-| POST   | `/customer/orders/{id}/cancel` | Cancel order          |
-
----
 
 ### Public Endpoints
 
@@ -282,7 +265,7 @@ Authorization: Bearer {your-token}
 **Request**
 
 ```http
-POST /api/v1/customer/orders
+POST /api/v1/orders
 Authorization: Bearer {token}
 Idempotency-Key: 550e8400-e29b-41d4-a716-446655440000
 Content-Type: application/json
