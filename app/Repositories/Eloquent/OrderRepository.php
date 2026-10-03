@@ -29,7 +29,6 @@ class OrderRepository implements OrderRepositoryInterface
     public function createOrder(array $data, string $idempotencyKey): Order
     {
         // Idempotency check — BEFORE transaction starts
-        // Same key দিয়ে retry আসলে existing order return করো
         $existing = Order::where('idempotency_key', $idempotencyKey)->first();
         if ($existing) {
             throw new DuplicateOrderException($existing);
@@ -163,7 +162,6 @@ class OrderRepository implements OrderRepositoryInterface
                         ->first();
 
                     if ($inventory) {
-                        // reserved_quantity কমাও — available stock বাড়বে
                         $release = min($inventory->reserved_quantity, $item->quantity);
                         $inventory->decrement('reserved_quantity', $release);
                         Cache::forget("inventory:variant:{$item->product_variant_id}");

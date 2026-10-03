@@ -65,7 +65,6 @@ class ProductRepository implements ProductRepositoryInterface
 
     public function findByIdOrSlug(string $identifier): ?Product
     {
-        // Cache key — id বা slug দিয়ে আলাদা key
         $cacheKey = "product:" . (is_numeric($identifier) ? "id:{$identifier}" : "slug:{$identifier}");
 
         return Cache::remember(
