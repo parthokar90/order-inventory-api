@@ -55,7 +55,7 @@
 
 | Layer            | Technology                     |
 | ---------------- | ------------------------------ |
-| Framework        | Laravel 11                     |
+| Framework        | Laravel 13.1                     |
 | Language         | PHP 8.2                        |
 | Database         | MySQL 8.0                      |
 | Cache / Queue    | Redis 7                        |
