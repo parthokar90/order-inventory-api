@@ -10,7 +10,7 @@
 
 <p align="center">
   A production-grade RESTful API backend for e-commerce order processing and inventory management.<br/>
-  Built with <strong>Laravel 11</strong>, <strong>MySQL</strong>, <strong>Redis</strong>, and <strong>Laravel Sanctum</strong>.
+  Built with <strong>Laravel 13.1</strong>, <strong>MySQL</strong>, <strong>Redis</strong>, and <strong>Laravel Sanctum</strong>.
 </p>
 
 ---
