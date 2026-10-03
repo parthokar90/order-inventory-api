@@ -41,7 +41,7 @@ class OrderRepository implements OrderRepositoryInterface
             // 1. Lock inventory rows & validate stock availability
             foreach ($data['items'] as $item) {
                 $inventory = Inventory::where('product_variant_id', $item['product_variant_id'])
-                    ->lockForUpdate() // pessimistic lock — concurrent requests queue হবে
+                    ->lockForUpdate() 
                     ->firstOrFail();
 
                 // available_quantity = quantity - reserved_quantity (Model accessor)
@@ -52,21 +52,21 @@ class OrderRepository implements OrderRepositoryInterface
                     );
                 }
 
-                // Fetch price from DB — client থেকে price নেওয়া security risk
+                
                 $variant = ProductVariant::select(['id', 'product_id', 'sku', 'price'])
                     ->with('product:id,name')
                     ->findOrFail($item['product_variant_id']);
 
-                // Soft reserve — actual deduction হবে order complete হলে
+                
                 $inventory->increment('reserved_quantity', $item['quantity']);
 
                 // Invalidate inventory cache
                 Cache::forget("inventory:variant:{$variant->id}");
 
-                $itemSubtotal  = $item['quantity'] * $variant->price; // DB price
+                $itemSubtotal  = $item['quantity'] * $variant->price; 
                 $subtotal     += $itemSubtotal;
 
-                // Snapshot — price/name পরে change হলেও order history ঠিক থাকবে
+                
                 $itemsToInsert[] = [
                     'product_variant_id' => $variant->id,
                     'variant_sku'        => $variant->sku,
@@ -127,7 +127,6 @@ class OrderRepository implements OrderRepositoryInterface
         });
 
         // Fire event AFTER transaction commits
-        // Transaction rollback হলে event fire হবে না
         event(new OrderPlaced($order));
 
         return $order->load([
@@ -154,7 +153,7 @@ class OrderRepository implements OrderRepositoryInterface
 
             $fromStatus = $order->status;
 
-            // Cancellation — reserved stock release করো
+        
             if ($newStatus === Order::STATUS_CANCELLED) {
                 foreach ($order->items as $item) {
                     $inventory = Inventory::where('product_variant_id', $item->product_variant_id)
@@ -172,7 +171,6 @@ class OrderRepository implements OrderRepositoryInterface
                 DB::afterCommit(fn() => event(new OrderCancelled($order)));
             }
 
-            // Completion — actual stock deduct করো
             if ($newStatus === Order::STATUS_COMPLETED) {
                 foreach ($order->items as $item) {
                     $inventory = Inventory::where('product_variant_id', $item->product_variant_id)
@@ -180,7 +178,7 @@ class OrderRepository implements OrderRepositoryInterface
                         ->first();
 
                     if ($inventory) {
-                        // reserved থেকে বাদ দাও + total quantity থেকেও বাদ দাও
+                        
                         $deduct = min($inventory->reserved_quantity, $item->quantity);
                         $inventory->decrement('reserved_quantity', $deduct);
                         $inventory->decrement('quantity', $deduct);

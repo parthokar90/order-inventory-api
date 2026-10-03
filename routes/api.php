@@ -26,7 +26,7 @@ Route::prefix('v1')->group(function () {
             Route::post('/orders', [OrderController::class, 'store']);
         });
 
-        // Admin-only testing route
+        // Admin-only 
         Route::middleware(['role:admin'])->group(function () {
             Route::apiResource('categories', CategoryController::class)->only(['store', 'update', 'destroy']);
             Route::apiResource('products', ProductController::class)->only(['store', 'update', 'destroy']);
