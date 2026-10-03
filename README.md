@@ -253,10 +253,10 @@ Authorization: Bearer {your-token}
 
 | Method | Endpoint           | Description                                |
 | ------ | ------------------ | ------------------------------------------ |
-| GET    | `/categories`      | Browse all categories                      |
-| GET    | `/categories/{id}` | Category with products                     |
-| GET    | `/products`        | Browse products (search, filter, paginate) |
-| GET    | `/products/{id}`   | Product detail with variants               |
+| GET    | `api/v1/categories`      | Browse all categories                      |
+| GET    | `api/v1/categories/{id}` | Category with products                     |
+| GET    | `api/v1/products`        | Browse products (search, filter, paginate) |
+| GET    | `api/v1/products/{id}`   | Product detail with variants               |
 
 ---
 
