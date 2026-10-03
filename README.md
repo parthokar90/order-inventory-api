@@ -1,7 +1,7 @@
 # 🛒 E-Commerce Order Processing & Inventory API
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Laravel-11-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" />
+  <img src="https://img.shields.io/badge/Laravel-13-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" />
   <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white" />
   <img src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
   <img src="https://img.shields.io/badge/Redis-7.0-DC382D?style=for-the-badge&logo=redis&logoColor=white" />
@@ -53,17 +53,17 @@
 
 ## 🛠 Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | Laravel 11 |
-| Language | PHP 8.2 |
-| Database | MySQL 8.0 |
-| Cache / Queue | Redis 7 |
-| Authentication | Laravel Sanctum |
-| Authorization | Spatie Laravel Permission |
-| Architecture | Service-Repository Pattern |
-| Containerization | Docker & Docker Compose |
-| API Style | RESTful, Versioned (`/api/v1`) |
+| Layer            | Technology                     |
+| ---------------- | ------------------------------ |
+| Framework        | Laravel 11                     |
+| Language         | PHP 8.2                        |
+| Database         | MySQL 8.0                      |
+| Cache / Queue    | Redis 7                        |
+| Authentication   | Laravel Sanctum                |
+| Authorization    | Spatie Laravel Permission      |
+| Architecture     | Service-Repository Pattern     |
+| Containerization | Docker & Docker Compose        |
+| API Style        | RESTful, Versioned (`/api/v1`) |
 
 ---
 
@@ -209,12 +209,15 @@ SANCTUM_STATEFUL_DOMAINS=localhost,127.0.0.1
 ## 📡 API Overview
 
 ### Base URL
+
 ```
 http://localhost:8000/api/v1
 ```
 
 ### Authentication
+
 All protected routes require a Bearer token in the `Authorization` header:
+
 ```
 Authorization: Bearer {your-token}
 ```
@@ -223,62 +226,63 @@ Authorization: Bearer {your-token}
 
 ### Admin Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/admin/login` | Admin login |
-| POST | `/admin/logout` | Admin logout |
-| GET | `/admin/categories` | List categories |
-| POST | `/admin/categories` | Create category |
-| PUT | `/admin/categories/{id}` | Update category |
-| DELETE | `/admin/categories/{id}` | Delete category |
-| GET | `/admin/products` | List products (search, filter, paginate) |
-| POST | `/admin/products` | Create product with variants |
-| GET | `/admin/products/{id}` | Product detail |
-| PUT | `/admin/products/{id}` | Update product |
-| DELETE | `/admin/products/{id}` | Soft delete product |
-| POST | `/admin/products/{id}/images` | Upload product image |
-| GET | `/admin/inventory` | Stock list with filters |
-| PATCH | `/admin/inventory/{variantId}/stock` | Update stock quantity |
-| GET | `/admin/inventory/low-stock` | Low stock alerts |
-| GET | `/admin/orders` | All orders (filter by status/date) |
-| GET | `/admin/orders/{id}` | Order detail with history |
-| PATCH | `/admin/orders/{id}/status` | Update order status |
-| POST | `/admin/orders/{id}/cancel` | Cancel order |
-| GET | `/admin/reports/sales` | Sales report |
-| GET | `/admin/reports/inventory` | Inventory report |
+| Method | Endpoint                             | Description                              |
+| ------ | ------------------------------------ | ---------------------------------------- |
+| POST   | `/admin/login`                       | Admin login                              |
+| POST   | `/admin/logout`                      | Admin logout                             |
+| GET    | `/admin/categories`                  | List categories                          |
+| POST   | `/admin/categories`                  | Create category                          |
+| PUT    | `/admin/categories/{id}`             | Update category                          |
+| DELETE | `/admin/categories/{id}`             | Delete category                          |
+| GET    | `/admin/products`                    | List products (search, filter, paginate) |
+| POST   | `/admin/products`                    | Create product with variants             |
+| GET    | `/admin/products/{id}`               | Product detail                           |
+| PUT    | `/admin/products/{id}`               | Update product                           |
+| DELETE | `/admin/products/{id}`               | Soft delete product                      |
+| POST   | `/admin/products/{id}/images`        | Upload product image                     |
+| GET    | `/admin/inventory`                   | Stock list with filters                  |
+| PATCH  | `/admin/inventory/{variantId}/stock` | Update stock quantity                    |
+| GET    | `/admin/inventory/low-stock`         | Low stock alerts                         |
+| GET    | `/admin/orders`                      | All orders (filter by status/date)       |
+| GET    | `/admin/orders/{id}`                 | Order detail with history                |
+| PATCH  | `/admin/orders/{id}/status`          | Update order status                      |
+| POST   | `/admin/orders/{id}/cancel`          | Cancel order                             |
+| GET    | `/admin/reports/sales`               | Sales report                             |
+| GET    | `/admin/reports/inventory`           | Inventory report                         |
 
 ---
 
 ### Customer Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/customer/register` | Customer registration |
-| POST | `/customer/login` | Customer login |
-| POST | `/customer/logout` | Logout |
-| GET | `/customer/profile` | View profile |
-| PATCH | `/customer/profile` | Update profile |
-| POST | `/customer/orders` | Place new order |
-| GET | `/customer/orders` | My order history |
-| GET | `/customer/orders/{id}` | Order detail |
-| POST | `/customer/orders/{id}/cancel` | Cancel order |
+| Method | Endpoint                       | Description           |
+| ------ | ------------------------------ | --------------------- |
+| POST   | `/customer/register`           | Customer registration |
+| POST   | `/customer/login`              | Customer login        |
+| POST   | `/customer/logout`             | Logout                |
+| GET    | `/customer/profile`            | View profile          |
+| PATCH  | `/customer/profile`            | Update profile        |
+| POST   | `/customer/orders`             | Place new order       |
+| GET    | `/customer/orders`             | My order history      |
+| GET    | `/customer/orders/{id}`        | Order detail          |
+| POST   | `/customer/orders/{id}/cancel` | Cancel order          |
 
 ---
 
 ### Public Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/categories` | Browse all categories |
-| GET | `/categories/{id}` | Category with products |
-| GET | `/products` | Browse products (search, filter, paginate) |
-| GET | `/products/{id}` | Product detail with variants |
+| Method | Endpoint           | Description                                |
+| ------ | ------------------ | ------------------------------------------ |
+| GET    | `/categories`      | Browse all categories                      |
+| GET    | `/categories/{id}` | Category with products                     |
+| GET    | `/products`        | Browse products (search, filter, paginate) |
+| GET    | `/products/{id}`   | Product detail with variants               |
 
 ---
 
 ### Sample — Place Order
 
 **Request**
+
 ```http
 POST /api/v1/customer/orders
 Authorization: Bearer {token}
@@ -302,54 +306,57 @@ Content-Type: application/json
 ```
 
 **Response `201 Created`**
+
 ```json
 {
-  "success": true,
-  "message": "Order placed successfully.",
-  "data": {
-    "id": 101,
-    "order_number": "ORD-20240615-XK92AB",
-    "status": "pending",
-    "subtotal": "1200.00",
-    "tax_amount": "60.00",
-    "discount_amount": "0.00",
-    "total_amount": "1260.00",
-    "items": [
-      {
-        "product_name": "Cotton T-Shirt",
-        "variant_sku": "TSH-RED-XL",
-        "quantity": 2,
-        "unit_price": "600.00",
-        "subtotal": "1200.00"
-      }
-    ],
-    "payment": {
-      "payment_method": "cash_on_delivery",
-      "amount": "1260.00",
-      "currency": "BDT",
-      "status": "pending"
-    },
-    "created_at": "2024-06-15T10:30:00.000000Z"
-  }
+    "success": true,
+    "message": "Order placed successfully.",
+    "data": {
+        "id": 101,
+        "order_number": "ORD-20240615-XK92AB",
+        "status": "pending",
+        "subtotal": "1200.00",
+        "tax_amount": "60.00",
+        "discount_amount": "0.00",
+        "total_amount": "1260.00",
+        "items": [
+            {
+                "product_name": "Cotton T-Shirt",
+                "variant_sku": "TSH-RED-XL",
+                "quantity": 2,
+                "unit_price": "600.00",
+                "subtotal": "1200.00"
+            }
+        ],
+        "payment": {
+            "payment_method": "cash_on_delivery",
+            "amount": "1260.00",
+            "currency": "BDT",
+            "status": "pending"
+        },
+        "created_at": "2024-06-15T10:30:00.000000Z"
+    }
 }
 ```
 
 **Response `409 Conflict` (duplicate request)**
+
 ```json
 {
-  "success": false,
-  "message": "Duplicate order request.",
-  "data": {
-    "order_number": "ORD-20240615-XK92AB"
-  }
+    "success": false,
+    "message": "Duplicate order request.",
+    "data": {
+        "order_number": "ORD-20240615-XK92AB"
+    }
 }
 ```
 
 **Response `422 Unprocessable` (out of stock)**
+
 ```json
 {
-  "success": false,
-  "message": "Insufficient stock for variant ID: 1. Available: 1, Requested: 2"
+    "success": false,
+    "message": "Insufficient stock for variant ID: 1. Available: 1, Requested: 2"
 }
 ```
 
@@ -382,68 +389,76 @@ categories (self-referential, nested)
 ### Table Descriptions
 
 #### `users` — Authentication for all actors
-| Column | Type | Notes |
-|--------|------|-------|
-| name | string | Full name |
-| email | string | Unique, used for login |
-| password | string | Bcrypt hashed |
-| is_active | boolean | Account toggle |
+
+| Column    | Type    | Notes                  |
+| --------- | ------- | ---------------------- |
+| name      | string  | Full name              |
+| email     | string  | Unique, used for login |
+| password  | string  | Bcrypt hashed          |
+| is_active | boolean | Account toggle         |
 
 #### `customers` — Customer profile (extends users)
-| Column | Type | Notes |
-|--------|------|-------|
-| user_id | bigint | FK → users (unique 1:1) |
-| phone | string | Optional, unique |
-| shipping_address | json | Default delivery address |
+
+| Column           | Type   | Notes                    |
+| ---------------- | ------ | ------------------------ |
+| user_id          | bigint | FK → users (unique 1:1)  |
+| phone            | string | Optional, unique         |
+| shipping_address | json   | Default delivery address |
 
 #### `products` — Base product record
-| Column | Type | Notes |
-|--------|------|-------|
-| category_id | bigint | FK → categories (restrictOnDelete) |
-| slug | string | Unique URL identifier |
-| is_active | boolean | Visibility toggle |
-| deleted_at | timestamp | Soft delete — preserves order history |
+
+| Column      | Type      | Notes                                 |
+| ----------- | --------- | ------------------------------------- |
+| category_id | bigint    | FK → categories (restrictOnDelete)    |
+| slug        | string    | Unique URL identifier                 |
+| is_active   | boolean   | Visibility toggle                     |
+| deleted_at  | timestamp | Soft delete — preserves order history |
 
 #### `product_variants` — Purchasable SKU with price
-| Column | Type | Notes |
-|--------|------|-------|
-| sku | string | Unique stock-keeping unit |
-| price | decimal | Current selling price |
+
+| Column           | Type    | Notes                       |
+| ---------------- | ------- | --------------------------- |
+| sku              | string  | Unique stock-keeping unit   |
+| price            | decimal | Current selling price       |
 | compare_at_price | decimal | Original price (sale badge) |
-| cost_price | decimal | For margin calculation |
+| cost_price       | decimal | For margin calculation      |
 
 #### `inventories` — Stock levels (1:1 with variant)
-| Column | Type | Notes |
-|--------|------|-------|
-| quantity | integer | Total physical stock |
-| reserved_quantity | integer | Soft-held for pending orders |
-| low_stock_threshold | integer | Alert trigger (default: 5) |
+
+| Column              | Type    | Notes                        |
+| ------------------- | ------- | ---------------------------- |
+| quantity            | integer | Total physical stock         |
+| reserved_quantity   | integer | Soft-held for pending orders |
+| low_stock_threshold | integer | Alert trigger (default: 5)   |
 
 > `available = quantity - reserved_quantity`
 
 #### `orders` — Master order record
-| Column | Type | Notes |
-|--------|------|-------|
-| order_number | string | ORD-20240101-ABC123 |
-| idempotency_key | string | Unique per request — prevents duplicates |
-| shipping_address | json | Snapshot at order time |
-| status | enum | pending → processing → completed / cancelled |
+
+| Column           | Type   | Notes                                        |
+| ---------------- | ------ | -------------------------------------------- |
+| order_number     | string | ORD-20240101-ABC123                          |
+| idempotency_key  | string | Unique per request — prevents duplicates     |
+| shipping_address | json   | Snapshot at order time                       |
+| status           | enum   | pending → processing → completed / cancelled |
 
 #### `order_items` — Snapshot of purchase details
-| Column | Type | Notes |
-|--------|------|-------|
-| product_name | string | Snapshot — survives product rename |
-| variant_sku | string | Snapshot — survives SKU change |
-| unit_price | decimal | DB price at order time — not client price |
+
+| Column       | Type    | Notes                                     |
+| ------------ | ------- | ----------------------------------------- |
+| product_name | string  | Snapshot — survives product rename        |
+| variant_sku  | string  | Snapshot — survives SKU change            |
+| unit_price   | decimal | DB price at order time — not client price |
 
 #### `order_status_histories` — Immutable audit log
-| Column | Type | Notes |
-|--------|------|-------|
-| from_status | enum | null if initial placement |
-| to_status | enum | New status |
-| changed_by_type | string | 'admin' / 'customer' / 'system' |
-| note | text | Reason for change |
-| created_at | timestamp | No updated_at — append-only |
+
+| Column          | Type      | Notes                           |
+| --------------- | --------- | ------------------------------- |
+| from_status     | enum      | null if initial placement       |
+| to_status       | enum      | New status                      |
+| changed_by_type | string    | 'admin' / 'customer' / 'system' |
+| note            | text      | Reason for change               |
+| created_at      | timestamp | No updated_at — append-only     |
 
 ---
 
@@ -452,6 +467,7 @@ categories (self-referential, nested)
 ### Cache Driver — Redis
 
 Redis is used over file/database cache because:
+
 - Sub-millisecond read latency
 - Atomic operations (safe for concurrent access)
 - Built-in TTL expiry
@@ -461,11 +477,11 @@ Redis is used over file/database cache because:
 
 ### What Is Cached
 
-| Cache Key | TTL | Data |
-|-----------|-----|------|
-| `product:id:{id}` | 30 min | Full product + variants + images + attributes |
-| `product:slug:{slug}` | 30 min | Same product, keyed by slug for SEO URLs |
-| `inventory:variant:{id}` | 5 min | Stock levels for a specific variant |
+| Cache Key                | TTL    | Data                                          |
+| ------------------------ | ------ | --------------------------------------------- |
+| `product:id:{id}`        | 30 min | Full product + variants + images + attributes |
+| `product:slug:{slug}`    | 30 min | Same product, keyed by slug for SEO URLs      |
+| `inventory:variant:{id}` | 5 min  | Stock levels for a specific variant           |
 
 **Product list pages are not cached** — filter/search/sort combinations are too varied to key efficiently. Cached only at the individual product level.
 
@@ -473,14 +489,14 @@ Redis is used over file/database cache because:
 
 ### Invalidation Rules
 
-| Event | Cache Keys Cleared |
-|-------|-------------------|
-| Product updated | `product:id:{id}`, `product:slug:{slug}` |
-| Product deleted | `product:id:{id}`, `product:slug:{slug}` |
-| Order placed (stock reserved) | `inventory:variant:{id}` for each item |
-| Order cancelled (stock released) | `inventory:variant:{id}` for each item |
-| Order completed (stock deducted) | `inventory:variant:{id}` for each item |
-| Admin restock | `inventory:variant:{id}` |
+| Event                            | Cache Keys Cleared                       |
+| -------------------------------- | ---------------------------------------- |
+| Product updated                  | `product:id:{id}`, `product:slug:{slug}` |
+| Product deleted                  | `product:id:{id}`, `product:slug:{slug}` |
+| Order placed (stock reserved)    | `inventory:variant:{id}` for each item   |
+| Order cancelled (stock released) | `inventory:variant:{id}` for each item   |
+| Order completed (stock deducted) | `inventory:variant:{id}` for each item   |
+| Admin restock                    | `inventory:variant:{id}`                 |
 
 ```php
 // Cache write
@@ -542,18 +558,21 @@ INDEX idx_osh_to_status_created    (to_status, created_at)
 ### Performance Techniques
 
 **1. Select specific columns — no `SELECT *`**
+
 ```php
 Product::select(['id', 'category_id', 'name', 'slug', 'is_active'])
     ->with(['category:id,name,slug'])
 ```
 
 **2. Eager loading — prevent N+1**
+
 ```php
 // 2 queries regardless of result count
 Product::with(['category:id,name,slug', 'primaryImage:id,product_id,path,disk'])->get();
 ```
 
 **3. Cursor pagination — consistent O(log n) at any scale**
+
 ```php
 // Offset: LIMIT 15 OFFSET 10000 scans 10,015 rows — gets slower with pages
 // Cursor: WHERE id < {cursor} LIMIT 15 — always hits primary key index
@@ -561,17 +580,20 @@ Product::orderBy('id', 'desc')->cursorPaginate(15);
 ```
 
 **4. Bulk insert — single query for multiple records**
+
 ```php
 $order->items()->insert($itemsArray); // one INSERT, not N inserts
 ```
 
 **5. Pessimistic locking — serialize concurrent stock access**
+
 ```php
 Inventory::where('product_variant_id', $id)->lockForUpdate()->firstOrFail();
 // Row locked until transaction commits — no race condition possible
 ```
 
 **6. Computed availability in SQL**
+
 ```php
 $query->whereRaw('(quantity - reserved_quantity) > 0');
 // MySQL evaluates in query — no PHP loop over results
@@ -617,11 +639,11 @@ HTTP Request
 
 **Why:** Sanctum is built for a single users table. Separate admin/customer tables require hacking the Sanctum token model, custom auth providers, and fragile middleware. One table with Spatie roles is cleaner, testable, and scalable.
 
-| | Two Tables ❌ | One Table + Spatie ✅ |
-|---|---|---|
-| Sanctum support | Requires hacks | Native |
-| Code duplication | High | None |
-| Permission control | Manual | Fine-grained |
+|                    | Two Tables ❌  | One Table + Spatie ✅ |
+| ------------------ | -------------- | --------------------- |
+| Sanctum support    | Requires hacks | Native                |
+| Code duplication   | High           | None                  |
+| Permission control | Manual         | Fine-grained          |
 
 ---
 
@@ -702,29 +724,29 @@ Transaction commits → event(new OrderPlaced) → Redis queue → email job →
 
 ### Rate Limiting
 
-| Endpoint | Limit | Reason |
-|----------|-------|--------|
-| Login (admin/customer) | 10/min | Brute force protection |
-| Order creation | 5/min | Prevent bot/spam orders |
-| Customer routes | 30/min | Normal usage headroom |
-| Admin routes | 60/min | Management operations |
-| Public browse | 60/min | High-traffic product browsing |
+| Endpoint               | Limit  | Reason                        |
+| ---------------------- | ------ | ----------------------------- |
+| Login (admin/customer) | 10/min | Brute force protection        |
+| Order creation         | 5/min  | Prevent bot/spam orders       |
+| Customer routes        | 30/min | Normal usage headroom         |
+| Admin routes           | 60/min | Management operations         |
+| Public browse          | 60/min | High-traffic product browsing |
 
 ---
 
 ### Security Summary
 
-| Threat | Solution |
-|--------|----------|
-| Unauthorized access | Sanctum Bearer token |
-| Role escalation | Spatie permission per route |
-| Price manipulation | Price read from DB only |
-| Duplicate orders | Idempotency key + unique index |
-| Race condition / oversell | Pessimistic lock in transaction |
-| Mass assignment | Explicit `$fillable` on all models |
-| Sensitive data leak | `$hidden` on password, deleted_at |
-| Brute force login | Rate limiting (10 req/min) |
-| SQL injection | Eloquent parameter binding |
+| Threat                    | Solution                           |
+| ------------------------- | ---------------------------------- |
+| Unauthorized access       | Sanctum Bearer token               |
+| Role escalation           | Spatie permission per route        |
+| Price manipulation        | Price read from DB only            |
+| Duplicate orders          | Idempotency key + unique index     |
+| Race condition / oversell | Pessimistic lock in transaction    |
+| Mass assignment           | Explicit `$fillable` on all models |
+| Sensitive data leak       | `$hidden` on password, deleted_at  |
+| Brute force login         | Rate limiting (10 req/min)         |
+| SQL injection             | Eloquent parameter binding         |
 
 ---
 
@@ -739,8 +761,7 @@ php artisan test
 
 ## 🔑 Default Credentials
 
-| Role | Email | Password |
-|------|-------|----------|
-| Admin | admin@email.com | 12345678 |
+| Role     | Email              | Password |
+| -------- | ------------------ | -------- |
+| Admin    | admin@email.com    | 12345678 |
 | Customer | customer@email.com | 12345678 |
-
