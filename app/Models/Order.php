@@ -108,4 +108,16 @@ class Order extends Model
     {
         return $this->status === self::STATUS_COMPLETED;
     }
+
+    public function statusHistories(): HasMany
+    {
+        return $this->hasMany(OrderStatusHistory::class)
+            ->orderBy('created_at', 'asc'); 
+    }
+
+    public function latestStatus(): HasOne
+    {
+        return $this->hasOne(OrderStatusHistory::class)
+            ->latestOfMany('created_at');
+    }
 }
